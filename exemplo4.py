@@ -42,7 +42,6 @@ def draw():
         screen.draw.text(
             "GAME OVER \nTotal de pontos: " + str(score),
             midtop=(400, 100),
-
             color="white"
         )
 
