@@ -1,3 +1,4 @@
+#Mu Editor - Pygame Zero mode
 import pgzrun
 
 alien = Actor('alien')
