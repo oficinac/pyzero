@@ -42,7 +42,7 @@ def draw():
     # draw the player if still alive
     if player.alive:
         player.draw()
-        platforms.draw()
+
 
     # draw messages over top
     if over:
