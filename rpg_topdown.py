@@ -1,7 +1,3 @@
-#Assets
-#https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
-#https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/
-#https://craftpix.net/file-licenses/
 # Tutorial: https://pygame-zero.readthedocs.io/en/stable/introduction.html
 import pgzrun  # program must always start with this
 from platformer import *
@@ -40,8 +36,7 @@ attach = Sprite("player.png", (0, 6 * 48, 48, 48), 4, color_key, 5)
 
 # define SpriteActor
 player = SpriteActor(idle)
-player.bottomleft = (WIDTH / 2, HEIGHT / 2)#- TILE_SIZE
-#player.scale = 2
+player.pos = (48, 48)
 # define Actor-specific variables
 player.alive = True
 player.jumping = False
@@ -54,23 +49,37 @@ def draw():
     screen.clear()  # clears the screen
     screen.fill("lightslateblue")  # fills background color
 
-
+    # draw ground
+    for tile in ground:
+        tile.draw()
+    # draw walls
     for wall in walls:
         wall.draw()
-
+    # draw obstacles
     for obstacle in obstacles:
         obstacle.draw()
-
-
+    # draw hearts
+    for heart in hearts:
+        heart.draw()
     # draw the player if still alive
     if player.alive:
         player.draw()
 
-
+    # draw messages over top
+    if over:
+        screen.draw.text("Game Over", center=(WIDTH / 2, HEIGHT / 2))
+    if win:
+        screen.draw.text("You win!", center=(WIDTH / 2, HEIGHT / 2))
 
 
 # updates game state between drawing of each frame
 def update():
+    # declare scope of global variables
+    global win, over
+
+    # if game is over, no more updating game state, just return
+    if over or win:
+        return
 
     # handle player left movement
     if player.directions[-1] == "left" and player.left > 0:
@@ -78,7 +87,6 @@ def update():
         # flip image and change x velocity
         player.sprite = walk_left
         # if the movement caused a collision
-        player.flip_x = True
         if player.collidelist(walls) != -1:
             # get object that player collided with
             collided = walls[player.collidelist(walls)]
@@ -91,13 +99,11 @@ def update():
         # flip image and change x velocity
         player.sprite = walk_right
         # if the movement caused a collision
-        player.flip_x = False
         if player.collidelist(walls) != -1:
             # get object that player collided with
             collided = walls[player.collidelist(walls)]
             # use it to calculate position where there is no collision
             player.right = collided.left
-
 
     # handle player up movement
     if player.directions[-1] == "up" and player.top > 0:
@@ -111,7 +117,6 @@ def update():
             # use it to calculate position where there is no collision
             player.top = collided.bottom
 
-
     # handle player down movement
     if player.directions[-1] == "down" and player.bottom < HEIGHT:
         player.y += player.velocity
@@ -124,17 +129,14 @@ def update():
             # use it to calculate position where there is no collision
             player.bottom = collided.top
 
-       # handle player down movement
-    if player.directions[-1] == "attach" and player.bottom < HEIGHT:
-        player.sprite = attach
-        # if the movement caused a collision
-
-
     # otherwise idle
     if player.directions[-1] == "idle":
         player.sprite = idle
 
     # player collided with obstacle, game over
+    if player.collidelist(obstacles) != -1:
+        player.alive = False
+        over = True
 
     # check if player collected hearts
     for heart in hearts:
@@ -156,8 +158,6 @@ def on_key_down(key):
         player.directions.append("up")
     elif key == keys.DOWN:
         player.directions.append("down")
-    elif key == keys.SPACE:
-        player.directions.append("attach")
 
 
 # called when a keyboard button is released
@@ -170,9 +170,6 @@ def on_key_up(key):
         player.directions.remove("up")
     elif key == keys.DOWN:
         player.directions.remove("down")
-    elif key == keys.SPACE:
-        player.directions.remove("attach")
 
 
 pgzrun.go()  # program must always end with this
-# Escreva o seu código aqui :-)
