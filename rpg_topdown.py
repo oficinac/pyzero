@@ -1,3 +1,7 @@
+#Assets
+#https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
+#https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/
+#https://craftpix.net/file-licenses/
 # Tutorial: https://pygame-zero.readthedocs.io/en/stable/introduction.html
 import pgzrun  # program must always start with this
 from platformer import *
