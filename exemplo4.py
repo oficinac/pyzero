@@ -1,5 +1,8 @@
+#Mu Editor - Pygame Zero mode
+#Tutorial: https://pygame-zero.readthedocs.io/en/stable/introduction.html
+#Library: https://www.aposteriori.com.sg/pygame-zero-helper/
 import pgzrun
-from pgzhelper import * 
+from pgzhelper import *
 from random import randint
 
 WIDTH = 800
@@ -44,7 +47,7 @@ def draw():
 
     alien.draw()
     icon.draw()
-    
+
 def update():
     global score, life, game_over
 
@@ -70,8 +73,8 @@ def move_alien():
         alien.animate()
         alien.x += 2
         alien.flip_x = False
-        
-        
+
+
 def icon_pos():
     global life
 
@@ -82,9 +85,8 @@ def icon_pos():
         sounds.snap.play()
         life -= 1
 
-    
+
 
 music.play("grasslands_theme")
 music.set_volume(0.1)
 pgzrun.go()
-

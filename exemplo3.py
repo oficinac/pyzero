@@ -1,4 +1,5 @@
 #Mu Editor - Pygame Zero mode
+# Tutorial: https://pygame-zero.readthedocs.io/en/stable/introduction.html
 import pgzrun
 from random import randint
 

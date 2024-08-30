@@ -1,3 +1,5 @@
+#Based https://github.com/mjdargen/cs4040
+#By Michael D'Argenio mjdargen
 #Assets
 #https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
 #https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/

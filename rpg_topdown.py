@@ -1,3 +1,5 @@
+#Based https://github.com/mjdargen/cs4040
+#By Michael D'Argenio mjdargen
 #Assets
 #https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
 #https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/
@@ -14,7 +16,7 @@ COLS = 20
 # Pygame constants
 WIDTH = TILE_SIZE * ROWS
 HEIGHT = TILE_SIZE * COLS
-TITLE = "Top-Down Perspective"
+TITLE = "RPG TopDown"
 
 # global variables
 jump_velocity = -10

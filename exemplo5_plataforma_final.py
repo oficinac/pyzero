@@ -1,3 +1,5 @@
+#Based https://github.com/mjdargen/cs4040
+#By Michael D'Argenio mjdargen
 #Assets
 #https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
 #https://craftpix.net/freebies/free-simple-platformer-game-kit-pixel-art/
@@ -49,14 +51,14 @@ def draw():
     screen.clear()  # clears the screen
     screen.fill("black")  # fills background col
     # draw platforms
-    
+
 
     for bg in bgs:
         bg.draw()
 
     for platform in platforms:
         platform.draw()
-        
+
     for item in items:
         item.draw()
 
