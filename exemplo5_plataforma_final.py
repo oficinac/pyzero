@@ -131,10 +131,13 @@ def update():
             player.top = collided.bottom
         # reset velocity
         player.velocity_y = 0
-    # check if fox collected mushrooms
+
     for item in items:
         if player.colliderect(item):
             items.remove(item)
+    if len(items) == 0:
+        win = True
+    
 
 # keyboard pressed event listener
 def on_key_down(key):
