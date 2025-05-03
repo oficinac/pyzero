@@ -88,7 +88,7 @@ def update():
         return
 
     # handle player left movement
-    if keyboard.LEFT and player.left > 0:
+    if keyboard.left and player.left > 0:
         player.x -= player.velocity_x
         # flip image and change sprite
         player.sprite = player_walk
@@ -100,7 +100,7 @@ def update():
             player.left = collided.right
 
 
-    elif keyboard.RIGHT and player.right < WIDTH:
+    elif keyboard.right and player.right < WIDTH:
         player.x += player.velocity_x
         # flip image and change sprite
         player.sprite = player_walk
@@ -137,12 +137,12 @@ def update():
             items.remove(item)
     if len(items) == 0:
         win = True
-    
+
 
 # keyboard pressed event listener
 def on_key_down(key):
     # up key and not already jumping
-    if key == keys.SPACE and not player.jumping:
+    if key == keys.spcace and not player.jumping:
         player.velocity_y = jump_velocity
         player.jumping = True
 
@@ -150,6 +150,6 @@ def on_key_down(key):
 # called when a keyboard button is released
 def on_key_up(key):
     # change to forward facing image when left/right keys released
-    if key == keys.LEFT or key == keys.RIGHT:
+    if key == keys.left or key == keys.right:
         player.sprite = player_idle
 pgzrun.go()  # program must always end with this

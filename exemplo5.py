@@ -37,8 +37,8 @@ player.jumping = False
 player.velocity_x = 3
 player.velocity_y = 0
 
-platforms = Actor("platform")
-platforms.pos = (WIDTH / 2,HEIGHT - 18)
+platforms = Actor("plataform")
+platforms.pos = (WIDTH / 2,HEIGHT /2)
 
 
 # displays the new frame
@@ -66,14 +66,14 @@ def update():
         return
 
     # handle player left movement
-    if keyboard.LEFT and player.left > 0:
+    if keyboard.left and player.left > 0:
         player.x -= player.velocity_x
         # flip image and change sprite
         player.sprite = player_walk
         player.flip_x = True
 
 
-    elif keyboard.RIGHT and player.right < WIDTH:
+    elif keyboard.right and player.right < WIDTH:
         player.x += player.velocity_x
         # flip image and change sprite
         player.sprite = player_walk
