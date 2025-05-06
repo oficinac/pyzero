@@ -142,7 +142,7 @@ def update():
 # keyboard pressed event listener
 def on_key_down(key):
     # up key and not already jumping
-    if key == keys.spcace and not player.jumping:
+    if key == keys.SPACE and not player.jumping:
         player.velocity_y = jump_velocity
         player.jumping = True
 
@@ -150,6 +150,6 @@ def on_key_down(key):
 # called when a keyboard button is released
 def on_key_up(key):
     # change to forward facing image when left/right keys released
-    if key == keys.left or key == keys.right:
+    if key == keys.LEFT or key == keys.RIGHT:
         player.sprite = player_idle
 pgzrun.go()  # program must always end with this
